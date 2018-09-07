@@ -341,6 +341,12 @@ namespace Square.Connect.Model
             NOFIELDSSET,
             
             /// <summary>
+            /// Enum DEPRECATEDFIELDSET for "DEPRECATED_FIELD_SET"
+            /// </summary>
+            [EnumMember(Value = "DEPRECATED_FIELD_SET")]
+            DEPRECATEDFIELDSET,
+            
+            /// <summary>
             /// Enum CARDEXPIRED for "CARD_EXPIRED"
             /// </summary>
             [EnumMember(Value = "CARD_EXPIRED")]
@@ -455,6 +461,12 @@ namespace Square.Connect.Model
             INVALIDCARDDATA,
             
             /// <summary>
+            /// Enum LOCATIONMISMATCH for "LOCATION_MISMATCH"
+            /// </summary>
+            [EnumMember(Value = "LOCATION_MISMATCH")]
+            LOCATIONMISMATCH,
+            
+            /// <summary>
             /// Enum IDEMPOTENCYKEYREUSED for "IDEMPOTENCY_KEY_REUSED"
             /// </summary>
             [EnumMember(Value = "IDEMPOTENCY_KEY_REUSED")]
@@ -521,6 +533,12 @@ namespace Square.Connect.Model
             NOTFOUND,
             
             /// <summary>
+            /// Enum METHODNOTALLOWED for "METHOD_NOT_ALLOWED"
+            /// </summary>
+            [EnumMember(Value = "METHOD_NOT_ALLOWED")]
+            METHODNOTALLOWED,
+            
+            /// <summary>
             /// Enum REQUESTTIMEOUT for "REQUEST_TIMEOUT"
             /// </summary>
             [EnumMember(Value = "REQUEST_TIMEOUT")]
@@ -560,7 +578,13 @@ namespace Square.Connect.Model
             /// Enum SERVICEUNAVAILABLE for "SERVICE_UNAVAILABLE"
             /// </summary>
             [EnumMember(Value = "SERVICE_UNAVAILABLE")]
-            SERVICEUNAVAILABLE
+            SERVICEUNAVAILABLE,
+            
+            /// <summary>
+            /// Enum GATEWAYTIMEOUT for "GATEWAY_TIMEOUT"
+            /// </summary>
+            [EnumMember(Value = "GATEWAY_TIMEOUT")]
+            GATEWAYTIMEOUT
         }
 
         /// <summary>

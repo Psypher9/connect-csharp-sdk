@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 BatchRetrieveOrders
 
-Retrieves a set of [Order](#type-order)s by their IDs. Only orders that have been successfully charged are included in the response.  If any of the order IDs in the request do not exist, or are associated with uncharged orders, then those orders will not be included in the set of orders in the response.  Note that in the future, uncharged orders may be returned by this endpoint.
+Retrieves a set of [Order](#type-order)s by their IDs.  If a given Order ID does not exist, the ID is ignored instead of generating an error.
 
 ### Example
 ```csharp
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 CreateOrder
 
-Creates an [Order](#type-order) that can then be referenced as `order_id` in a request to the [Charge](#endpoint-charge) endpoint. Orders specify products for purchase, along with discounts, taxes, and other settings to apply to the purchase.  To associate a created order with a request to the Charge endpoint, provide the order's `id` in the `order_id` field of your request.  You cannot modify an order after you create it. If you need to modify an order, instead create a new order with modified details.  To learn more about the Orders API, see the [Orders API Overview](https://docs.connect.squareup.com/articles/orders-api-overview).
+Creates an [Order](#type-order) that can then be referenced as `order_id` in a request to the [Charge](#endpoint-charge) endpoint. Orders specify products for purchase, along with discounts, taxes, and other settings to apply to the purchase.  To associate a created order with a request to the Charge endpoint, provide the order's `id` in the `order_id` field of your request.  You cannot modify an order after you create it. If you need to modify an order, instead create a new order with modified details.  To learn more about the Orders API, see the [Orders API Overview](/products/orders/overview).
 
 ### Example
 ```csharp

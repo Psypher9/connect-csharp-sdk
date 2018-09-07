@@ -35,6 +35,8 @@ namespace Square.Connect.Test
         private const string LARGE_TEA_ID = "#LargeTea";
         private const string SALES_TAX_ID = "#SalesTax";
         private const string ANOTHER_SALES_TAX_ID = "#AnotherSalesTax";
+        private const int BATCH_NUMBER = 3;
+        private const int CATALOG_PER_BATCH_NUMBER = 5;
 
         private static readonly CatalogObject beverages = new CatalogObject(
             Type: TypeEnum.CATEGORY,
@@ -309,11 +311,11 @@ namespace Square.Connect.Test
             var batches = new List<CatalogObjectBatch>();
             int numObjects = 0;
 
-            for (int batchNum = 0; batchNum < 3; batchNum++)
+            for (int batchNum = 0; batchNum < BATCH_NUMBER; batchNum++)
             {
                 var objects = new List<CatalogObject>();
 
-                for (int i = 0; i < 100; i++)
+                for (int i = 0; i < CATALOG_PER_BATCH_NUMBER; i++)
                 {
                     var itemId = string.Format("#Item-{0}-{1}", batchNum, i);
                     var itemName = string.Format("Item Name {0}-{1}", batchNum, i);
@@ -403,7 +405,8 @@ namespace Square.Connect.Test
             Assert.IsNotNull(resp);
             Assert.AreEqual(coffee.Type, resp._Object.Type);
             Assert.AreEqual(idMap[COFFEE_ID], resp._Object.Id);
-            Assert.IsNotNullOrEmpty(resp._Object.UpdatedAt);
+            Assert.IsNotNull(resp._Object.UpdatedAt);
+            Assert.IsNotEmpty(resp._Object.UpdatedAt);
             Assert.AreNotEqual(0, resp._Object.Version);
             Assert.IsFalse(resp._Object.IsDeleted.Value);
             Assert.AreEqual(coffee.ItemData.Name, resp._Object.ItemData.Name);
@@ -424,7 +427,8 @@ namespace Square.Connect.Test
             Assert.IsNotNull(resp);
             Assert.AreEqual(salesTax.Type, resp._Object.Type);
             Assert.AreEqual(idMap[SALES_TAX_ID], resp._Object.Id);
-            Assert.IsNotNullOrEmpty(resp._Object.UpdatedAt);
+            Assert.IsNotNull(resp._Object.UpdatedAt);
+            Assert.IsNotEmpty(resp._Object.UpdatedAt);
             Assert.AreNotEqual(0, resp._Object.Version);
             Assert.IsFalse(resp._Object.IsDeleted.Value);
             Assert.AreEqual(salesTax.TaxData.Name, resp._Object.TaxData.Name);

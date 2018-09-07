@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**DeleteCustomerCard**](CustomersApi.md#deletecustomercard) | **DELETE** /v2/customers/{customer_id}/cards/{card_id} | DeleteCustomerCard
 [**ListCustomers**](CustomersApi.md#listcustomers) | **GET** /v2/customers | ListCustomers
 [**RetrieveCustomer**](CustomersApi.md#retrievecustomer) | **GET** /v2/customers/{customer_id} | RetrieveCustomer
+[**SearchCustomers**](CustomersApi.md#searchcustomers) | **POST** /v2/customers/search | SearchCustomers
 [**UpdateCustomer**](CustomersApi.md#updatecustomer) | **PUT** /v2/customers/{customer_id} | UpdateCustomer
 
 
@@ -279,7 +280,7 @@ Name | Type | Description  | Notes
 
 <a name="listcustomers"></a>
 # **ListCustomers**
-> ListCustomersResponse ListCustomers (string cursor = null)
+> ListCustomersResponse ListCustomers (string cursor = null, string sortField = null, string sortOrder = null)
 
 ListCustomers
 
@@ -305,11 +306,13 @@ namespace Example
 
             var apiInstance = new CustomersApi();
             var cursor = cursor_example;  // string | A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional) 
+            var sortField = sortField_example;  // string | Indicates how Customers should be sorted. Default: `DEFAULT`. See [CustomerSortField](#type-customersortfield) for possible values. (optional) 
+            var sortOrder = sortOrder_example;  // string | Indicates whether Customers should be sorted in ascending (`ASC`) or descending (`DESC`) order. Default: `ASC`. See [SortOrder](#type-sortorder) for possible values. (optional) 
 
             try
             {
                 // ListCustomers
-                ListCustomersResponse result = apiInstance.ListCustomers(cursor);
+                ListCustomersResponse result = apiInstance.ListCustomers(cursor, sortField, sortOrder);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -326,6 +329,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cursor** | **string**| A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. | [optional] 
+ **sortField** | **string**| Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. | [optional] 
+ **sortOrder** | **string**| Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. | [optional] 
 
 ### Return type
 
@@ -395,6 +400,71 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**RetrieveCustomerResponse**](RetrieveCustomerResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="searchcustomers"></a>
+# **SearchCustomers**
+> SearchCustomersResponse SearchCustomers (SearchCustomersRequest body)
+
+SearchCustomers
+
+Searches the customer profiles associated with a Square account. Calling SearchCustomers without an explicit query parameter returns all customer profiles ordered alphabetically based on `given_name` and `family_name`.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Square.Connect.Api;
+using Square.Connect.Client;
+using Square.Connect.Model;
+
+namespace Example
+{
+    public class SearchCustomersExample
+    {
+        public void main()
+        {
+            
+            // Configure OAuth2 access token for authorization: oauth2
+            Configuration.Default.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new CustomersApi();
+            var body = new SearchCustomersRequest(); // SearchCustomersRequest | An object containing the fields to POST for the request.  See the corresponding object definition for field details.
+
+            try
+            {
+                // SearchCustomers
+                SearchCustomersResponse result = apiInstance.SearchCustomers(body);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling CustomersApi.SearchCustomers: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**SearchCustomersRequest**](SearchCustomersRequest.md)| An object containing the fields to POST for the request.  See the corresponding object definition for field details. | 
+
+### Return type
+
+[**SearchCustomersResponse**](SearchCustomersResponse.md)
 
 ### Authorization
 

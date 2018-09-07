@@ -120,8 +120,10 @@ namespace Square.Connect.Api
         /// </remarks>
         /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cursor">A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)</param>
+        /// <param name="sortField">Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)</param>
+        /// <param name="sortOrder">Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)</param>
         /// <returns>ListCustomersResponse</returns>
-        ListCustomersResponse ListCustomers (string cursor = null);
+        ListCustomersResponse ListCustomers (string cursor = null, string sortField = null, string sortOrder = null);
 
         /// <summary>
         /// ListCustomers
@@ -131,8 +133,10 @@ namespace Square.Connect.Api
         /// </remarks>
         /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cursor">A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)</param>
+        /// <param name="sortField">Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)</param>
+        /// <param name="sortOrder">Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)</param>
         /// <returns>ApiResponse of ListCustomersResponse</returns>
-        ApiResponse<ListCustomersResponse> ListCustomersWithHttpInfo (string cursor = null);
+        ApiResponse<ListCustomersResponse> ListCustomersWithHttpInfo (string cursor = null, string sortField = null, string sortOrder = null);
         /// <summary>
         /// RetrieveCustomer
         /// </summary>
@@ -154,6 +158,27 @@ namespace Square.Connect.Api
         /// <param name="customerId">The ID of the customer to retrieve.</param>
         /// <returns>ApiResponse of RetrieveCustomerResponse</returns>
         ApiResponse<RetrieveCustomerResponse> RetrieveCustomerWithHttpInfo (string customerId);
+        /// <summary>
+        /// SearchCustomers
+        /// </summary>
+        /// <remarks>
+        /// Searches the customer profiles associated with a Square account. Calling SearchCustomers without an explicit query parameter returns all customer profiles ordered alphabetically based on &#x60;given_name&#x60; and &#x60;family_name&#x60;.
+        /// </remarks>
+        /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">An object containing the fields to POST for the request.  See the corresponding object definition for field details.</param>
+        /// <returns>SearchCustomersResponse</returns>
+        SearchCustomersResponse SearchCustomers (SearchCustomersRequest body);
+
+        /// <summary>
+        /// SearchCustomers
+        /// </summary>
+        /// <remarks>
+        /// Searches the customer profiles associated with a Square account. Calling SearchCustomers without an explicit query parameter returns all customer profiles ordered alphabetically based on &#x60;given_name&#x60; and &#x60;family_name&#x60;.
+        /// </remarks>
+        /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">An object containing the fields to POST for the request.  See the corresponding object definition for field details.</param>
+        /// <returns>ApiResponse of SearchCustomersResponse</returns>
+        ApiResponse<SearchCustomersResponse> SearchCustomersWithHttpInfo (SearchCustomersRequest body);
         /// <summary>
         /// UpdateCustomer
         /// </summary>
@@ -275,8 +300,10 @@ namespace Square.Connect.Api
         /// </remarks>
         /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cursor">A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)</param>
+        /// <param name="sortField">Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)</param>
+        /// <param name="sortOrder">Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)</param>
         /// <returns>Task of ListCustomersResponse</returns>
-        System.Threading.Tasks.Task<ListCustomersResponse> ListCustomersAsync (string cursor = null);
+        System.Threading.Tasks.Task<ListCustomersResponse> ListCustomersAsync (string cursor = null, string sortField = null, string sortOrder = null);
 
         /// <summary>
         /// ListCustomers
@@ -286,8 +313,10 @@ namespace Square.Connect.Api
         /// </remarks>
         /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cursor">A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)</param>
+        /// <param name="sortField">Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)</param>
+        /// <param name="sortOrder">Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)</param>
         /// <returns>Task of ApiResponse (ListCustomersResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCustomersResponse>> ListCustomersAsyncWithHttpInfo (string cursor = null);
+        System.Threading.Tasks.Task<ApiResponse<ListCustomersResponse>> ListCustomersAsyncWithHttpInfo (string cursor = null, string sortField = null, string sortOrder = null);
         /// <summary>
         /// RetrieveCustomer
         /// </summary>
@@ -309,6 +338,27 @@ namespace Square.Connect.Api
         /// <param name="customerId">The ID of the customer to retrieve.</param>
         /// <returns>Task of ApiResponse (RetrieveCustomerResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<RetrieveCustomerResponse>> RetrieveCustomerAsyncWithHttpInfo (string customerId);
+        /// <summary>
+        /// SearchCustomers
+        /// </summary>
+        /// <remarks>
+        /// Searches the customer profiles associated with a Square account. Calling SearchCustomers without an explicit query parameter returns all customer profiles ordered alphabetically based on &#x60;given_name&#x60; and &#x60;family_name&#x60;.
+        /// </remarks>
+        /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">An object containing the fields to POST for the request.  See the corresponding object definition for field details.</param>
+        /// <returns>Task of SearchCustomersResponse</returns>
+        System.Threading.Tasks.Task<SearchCustomersResponse> SearchCustomersAsync (SearchCustomersRequest body);
+
+        /// <summary>
+        /// SearchCustomers
+        /// </summary>
+        /// <remarks>
+        /// Searches the customer profiles associated with a Square account. Calling SearchCustomers without an explicit query parameter returns all customer profiles ordered alphabetically based on &#x60;given_name&#x60; and &#x60;family_name&#x60;.
+        /// </remarks>
+        /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">An object containing the fields to POST for the request.  See the corresponding object definition for field details.</param>
+        /// <returns>Task of ApiResponse (SearchCustomersResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SearchCustomersResponse>> SearchCustomersAsyncWithHttpInfo (SearchCustomersRequest body);
         /// <summary>
         /// UpdateCustomer
         /// </summary>
@@ -489,7 +539,7 @@ namespace Square.Connect.Api
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
+            localVarHeaderParams.Add("Square-Version", "2018-07-12");
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -657,7 +707,7 @@ namespace Square.Connect.Api
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
+            localVarHeaderParams.Add("Square-Version", "2018-07-12");
             if (customerId != null) localVarPathParams.Add("customer_id", Configuration.ApiClient.ParameterToString(customerId)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
@@ -827,7 +877,7 @@ namespace Square.Connect.Api
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
+            localVarHeaderParams.Add("Square-Version", "2018-07-12");
             if (customerId != null) localVarPathParams.Add("customer_id", Configuration.ApiClient.ParameterToString(customerId)); // path parameter
 
             // authentication (oauth2) required
@@ -981,7 +1031,7 @@ namespace Square.Connect.Api
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
+            localVarHeaderParams.Add("Square-Version", "2018-07-12");
             if (customerId != null) localVarPathParams.Add("customer_id", Configuration.ApiClient.ParameterToString(customerId)); // path parameter
             if (cardId != null) localVarPathParams.Add("card_id", Configuration.ApiClient.ParameterToString(cardId)); // path parameter
 
@@ -1097,10 +1147,12 @@ namespace Square.Connect.Api
         /// </summary>
         /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cursor">A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)</param>
+        /// <param name="sortField">Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)</param>
+        /// <param name="sortOrder">Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)</param>
         /// <returns>ListCustomersResponse</returns>
-        public ListCustomersResponse ListCustomers (string cursor = null)
+        public ListCustomersResponse ListCustomers (string cursor = null, string sortField = null, string sortOrder = null)
         {
-             ApiResponse<ListCustomersResponse> localVarResponse = ListCustomersWithHttpInfo(cursor);
+             ApiResponse<ListCustomersResponse> localVarResponse = ListCustomersWithHttpInfo(cursor, sortField, sortOrder);
              return localVarResponse.Data;
         }
 
@@ -1109,8 +1161,10 @@ namespace Square.Connect.Api
         /// </summary>
         /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cursor">A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)</param>
+        /// <param name="sortField">Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)</param>
+        /// <param name="sortOrder">Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)</param>
         /// <returns>ApiResponse of ListCustomersResponse</returns>
-        public ApiResponse< ListCustomersResponse > ListCustomersWithHttpInfo (string cursor = null)
+        public ApiResponse< ListCustomersResponse > ListCustomersWithHttpInfo (string cursor = null, string sortField = null, string sortOrder = null)
         {
 
             var localVarPath = "/v2/customers";
@@ -1134,8 +1188,10 @@ namespace Square.Connect.Api
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
+            localVarHeaderParams.Add("Square-Version", "2018-07-12");
             if (cursor != null) localVarQueryParams.Add("cursor", Configuration.ApiClient.ParameterToString(cursor)); // query parameter
+            if (sortField != null) localVarQueryParams.Add("sort_field", Configuration.ApiClient.ParameterToString(sortField)); // query parameter
+            if (sortOrder != null) localVarQueryParams.Add("sort_order", Configuration.ApiClient.ParameterToString(sortOrder)); // query parameter
 
             // authentication (oauth2) required
             // oauth required
@@ -1168,10 +1224,12 @@ namespace Square.Connect.Api
         /// </summary>
         /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cursor">A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)</param>
+        /// <param name="sortField">Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)</param>
+        /// <param name="sortOrder">Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)</param>
         /// <returns>Task of ListCustomersResponse</returns>
-        public async System.Threading.Tasks.Task<ListCustomersResponse> ListCustomersAsync (string cursor = null)
+        public async System.Threading.Tasks.Task<ListCustomersResponse> ListCustomersAsync (string cursor = null, string sortField = null, string sortOrder = null)
         {
-             ApiResponse<ListCustomersResponse> localVarResponse = await ListCustomersAsyncWithHttpInfo(cursor);
+             ApiResponse<ListCustomersResponse> localVarResponse = await ListCustomersAsyncWithHttpInfo(cursor, sortField, sortOrder);
              return localVarResponse.Data;
 
         }
@@ -1181,8 +1239,10 @@ namespace Square.Connect.Api
         /// </summary>
         /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cursor">A pagination cursor returned by a previous call to this endpoint. Provide this to retrieve the next set of results for your original query.  See [Paginating results](#paginatingresults) for more information. (optional)</param>
+        /// <param name="sortField">Indicates how Customers should be sorted. Default: &#x60;DEFAULT&#x60;. See [CustomerSortField](#type-customersortfield) for possible values. (optional)</param>
+        /// <param name="sortOrder">Indicates whether Customers should be sorted in ascending (&#x60;ASC&#x60;) or descending (&#x60;DESC&#x60;) order. Default: &#x60;ASC&#x60;. See [SortOrder](#type-sortorder) for possible values. (optional)</param>
         /// <returns>Task of ApiResponse (ListCustomersResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ListCustomersResponse>> ListCustomersAsyncWithHttpInfo (string cursor = null)
+        public async System.Threading.Tasks.Task<ApiResponse<ListCustomersResponse>> ListCustomersAsyncWithHttpInfo (string cursor = null, string sortField = null, string sortOrder = null)
         {
 
             var localVarPath = "/v2/customers";
@@ -1208,6 +1268,8 @@ namespace Square.Connect.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (cursor != null) localVarQueryParams.Add("cursor", Configuration.ApiClient.ParameterToString(cursor)); // query parameter
+            if (sortField != null) localVarQueryParams.Add("sort_field", Configuration.ApiClient.ParameterToString(sortField)); // query parameter
+            if (sortOrder != null) localVarQueryParams.Add("sort_order", Configuration.ApiClient.ParameterToString(sortOrder)); // query parameter
 
             // authentication (oauth2) required
             // oauth required
@@ -1280,7 +1342,7 @@ namespace Square.Connect.Api
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
+            localVarHeaderParams.Add("Square-Version", "2018-07-12");
             if (customerId != null) localVarPathParams.Add("customer_id", Configuration.ApiClient.ParameterToString(customerId)); // path parameter
 
             // authentication (oauth2) required
@@ -1385,6 +1447,169 @@ namespace Square.Connect.Api
         }
 
         /// <summary>
+        /// SearchCustomers Searches the customer profiles associated with a Square account. Calling SearchCustomers without an explicit query parameter returns all customer profiles ordered alphabetically based on &#x60;given_name&#x60; and &#x60;family_name&#x60;.
+        /// </summary>
+        /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">An object containing the fields to POST for the request.  See the corresponding object definition for field details.</param>
+        /// <returns>SearchCustomersResponse</returns>
+        public SearchCustomersResponse SearchCustomers (SearchCustomersRequest body)
+        {
+             ApiResponse<SearchCustomersResponse> localVarResponse = SearchCustomersWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// SearchCustomers Searches the customer profiles associated with a Square account. Calling SearchCustomers without an explicit query parameter returns all customer profiles ordered alphabetically based on &#x60;given_name&#x60; and &#x60;family_name&#x60;.
+        /// </summary>
+        /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">An object containing the fields to POST for the request.  See the corresponding object definition for field details.</param>
+        /// <returns>ApiResponse of SearchCustomersResponse</returns>
+        public ApiResponse< SearchCustomersResponse > SearchCustomersWithHttpInfo (SearchCustomersRequest body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling CustomersApi->SearchCustomers");
+
+            var localVarPath = "/v2/customers/search";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            localVarHeaderParams.Add("Square-Version", "2018-07-12");
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SearchCustomers", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<SearchCustomersResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (SearchCustomersResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchCustomersResponse)));
+            
+        }
+
+        /// <summary>
+        /// SearchCustomers Searches the customer profiles associated with a Square account. Calling SearchCustomers without an explicit query parameter returns all customer profiles ordered alphabetically based on &#x60;given_name&#x60; and &#x60;family_name&#x60;.
+        /// </summary>
+        /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">An object containing the fields to POST for the request.  See the corresponding object definition for field details.</param>
+        /// <returns>Task of SearchCustomersResponse</returns>
+        public async System.Threading.Tasks.Task<SearchCustomersResponse> SearchCustomersAsync (SearchCustomersRequest body)
+        {
+             ApiResponse<SearchCustomersResponse> localVarResponse = await SearchCustomersAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// SearchCustomers Searches the customer profiles associated with a Square account. Calling SearchCustomers without an explicit query parameter returns all customer profiles ordered alphabetically based on &#x60;given_name&#x60; and &#x60;family_name&#x60;.
+        /// </summary>
+        /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">An object containing the fields to POST for the request.  See the corresponding object definition for field details.</param>
+        /// <returns>Task of ApiResponse (SearchCustomersResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SearchCustomersResponse>> SearchCustomersAsyncWithHttpInfo (SearchCustomersRequest body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling CustomersApi->SearchCustomers");
+
+            var localVarPath = "/v2/customers/search";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json"
+            };
+            String localVarHttpContentType = Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+
+            // authentication (oauth2) required
+            // oauth required
+            if (!String.IsNullOrEmpty(Configuration.AccessToken))
+            {
+                localVarHeaderParams["Authorization"] = "Bearer " + Configuration.AccessToken;
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SearchCustomers", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<SearchCustomersResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (SearchCustomersResponse) Configuration.ApiClient.Deserialize(localVarResponse, typeof(SearchCustomersResponse)));
+            
+        }
+
+        /// <summary>
         /// UpdateCustomer Updates the details of an existing customer. The ID of the customer may change if the customer has been merged into another customer.  You cannot edit a customer&#39;s cards on file with this endpoint. To make changes to a card on file, you must delete the existing card on file with the [DeleteCustomerCard](#endpoint-deletecustomercard) endpoint, then create a new one with the [CreateCustomerCard](#endpoint-createcustomercard) endpoint.
         /// </summary>
         /// <exception cref="Square.Connect.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1434,7 +1659,7 @@ namespace Square.Connect.Api
             String localVarHttpHeaderAccept = Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
+            localVarHeaderParams.Add("Square-Version", "2018-07-12");
             if (customerId != null) localVarPathParams.Add("customer_id", Configuration.ApiClient.ParameterToString(customerId)); // path parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {

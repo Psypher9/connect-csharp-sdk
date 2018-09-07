@@ -1,14 +1,14 @@
 Square Connect C# SDK [![Build Status](https://travis-ci.org/square/connect-csharp-sdk.svg?branch=master)](https://travis-ci.org/square/connect-csharp-sdk)[![NuGet version](https://badge.fury.io/nu/Square.Connect.svg)](https://badge.fury.io/nu/Square.Connect)
 ==================
 
-**If you have feedback about the new SDKs, or just want to talk to other Square Developers, request an invite to the new [slack community for Square Developers](https://docs.google.com/forms/d/e/1FAIpQLSfAZGIEZoNs-XryKqUoW3atFQHdQw5UqXLMOVPq3V4DEq-AJw/viewform?usp=sf_link#response=ACYDBNj5LFgPy8Tcac2gSgv_IjXvgWsPy2CO2xTXwnc0OSSxCvWFgc7SCDHvVQ)**
+**If you have feedback about the new SDKs, or just want to talk to other Square Developers, request an invite to the new [slack community for Square Developers](https://squ.re/2GUW1SQ)**
 
 This repository contains the released C# client SDK. Check out our [API
 specification repository](https://github.com/square/connect-api-specification)
 for the specification and template files we used to generate this.
 
 ## Frameworks supported
-- .NET 4.5 or later
+- .NET Standard 2.0
 
 ## Usage
 ### **Obtain from [NuGet package manager](https://www.nuget.org/packages/Square.Connect/) (Recommended)**
@@ -19,16 +19,8 @@ PM> Install-Package Square.Connect
 ### **Generating DLLs from source**
 
 #### Dependencies
-- [RestSharp] (https://www.nuget.org/packages/RestSharp) - 105.1.0 or later
-- [Json.NET] (https://www.nuget.org/packages/Newtonsoft.Json/) - 7.0.0 or later
-
-NOTE: RestSharp versions greater than 105.1.0 have a bug which causes file uploads to fail. See [RestSharp#742](https://github.com/restsharp/RestSharp/issues/742)
-
-The DLLs included in the package may not be the latest version. We recommned using [NuGet](https://docs.nuget.org/consume/installing-nuget) to obtain the latest version of the packages:
-```
-PM> Install-Package RestSharp
-PM> Install-Package Newtonsoft.Json
-```
+- [RestSharp] (https://www.nuget.org/packages/RestSharp) - 106.3.1 or later
+- [Json.NET] (https://www.nuget.org/packages/Newtonsoft.Json/) - 11.0.2 or later
 
 Option 1: Run the following command to generate the DLL
 
@@ -39,8 +31,6 @@ Option 2: Import the `Square.Connect/Square.Connect.csproj` to your solution and
 
 Then include the DLLs (under the `bin` folder) in the C# project,
 
-- RestSharp.dll
-- Newtonsoft.Json.dll
 - Square.Connect.dll
 
 ## Getting Started
@@ -128,8 +118,13 @@ Class | Method | HTTP request
 *CustomersApi* | [**DeleteCustomerCard**](docs/CustomersApi.md#deletecustomercard) | **DELETE** /v2/customers/{customer_id}/cards/{card_id}
 *CustomersApi* | [**ListCustomers**](docs/CustomersApi.md#listcustomers) | **GET** /v2/customers
 *CustomersApi* | [**RetrieveCustomer**](docs/CustomersApi.md#retrievecustomer) | **GET** /v2/customers/{customer_id}
+*CustomersApi* | [**SearchCustomers**](docs/CustomersApi.md#searchcustomers) | **POST** /v2/customers/search
 *CustomersApi* | [**UpdateCustomer**](docs/CustomersApi.md#updatecustomer) | **PUT** /v2/customers/{customer_id}
 *LocationsApi* | [**ListLocations**](docs/LocationsApi.md#listlocations) | **GET** /v2/locations
+*MobileAuthorizationApi* | [**CreateMobileAuthorizationCode**](docs/MobileAuthorizationApi.md#createmobileauthorizationcode) | **POST** /mobile/authorization-code
+*OAuthApi* | [**ObtainToken**](docs/OAuthApi.md#obtaintoken) | **POST** /oauth2/token
+*OAuthApi* | [**RenewToken**](docs/OAuthApi.md#renewtoken) | **POST** /oauth2/clients/{client_id}/access-token/renew
+*OAuthApi* | [**RevokeToken**](docs/OAuthApi.md#revoketoken) | **POST** /oauth2/revoke
 *OrdersApi* | [**BatchRetrieveOrders**](docs/OrdersApi.md#batchretrieveorders) | **POST** /v2/locations/{location_id}/orders/batch-retrieve
 *OrdersApi* | [**CreateOrder**](docs/OrdersApi.md#createorder) | **POST** /v2/locations/{location_id}/orders
 *ReportingApi* | [**ListAdditionalRecipientReceivableRefunds**](docs/ReportingApi.md#listadditionalrecipientreceivablerefunds) | **GET** /v2/locations/{location_id}/additional-recipient-receivable-refunds
@@ -263,6 +258,8 @@ Class | Method | HTTP request
  - [Model.CreateCustomerCardResponse](docs/CreateCustomerCardResponse.md)
  - [Model.CreateCustomerRequest](docs/CreateCustomerRequest.md)
  - [Model.CreateCustomerResponse](docs/CreateCustomerResponse.md)
+ - [Model.CreateMobileAuthorizationCodeRequest](docs/CreateMobileAuthorizationCodeRequest.md)
+ - [Model.CreateMobileAuthorizationCodeResponse](docs/CreateMobileAuthorizationCodeResponse.md)
  - [Model.CreateOrderRequest](docs/CreateOrderRequest.md)
  - [Model.CreateOrderRequestDiscount](docs/CreateOrderRequestDiscount.md)
  - [Model.CreateOrderRequestLineItem](docs/CreateOrderRequestLineItem.md)
@@ -272,8 +269,12 @@ Class | Method | HTTP request
  - [Model.CreateRefundRequest](docs/CreateRefundRequest.md)
  - [Model.CreateRefundResponse](docs/CreateRefundResponse.md)
  - [Model.Customer](docs/Customer.md)
+ - [Model.CustomerCreationSourceFilter](docs/CustomerCreationSourceFilter.md)
+ - [Model.CustomerFilter](docs/CustomerFilter.md)
  - [Model.CustomerGroupInfo](docs/CustomerGroupInfo.md)
  - [Model.CustomerPreferences](docs/CustomerPreferences.md)
+ - [Model.CustomerQuery](docs/CustomerQuery.md)
+ - [Model.CustomerSort](docs/CustomerSort.md)
  - [Model.DeleteCatalogObjectRequest](docs/DeleteCatalogObjectRequest.md)
  - [Model.DeleteCatalogObjectResponse](docs/DeleteCatalogObjectResponse.md)
  - [Model.DeleteCustomerCardRequest](docs/DeleteCustomerCardRequest.md)
@@ -299,6 +300,8 @@ Class | Method | HTTP request
  - [Model.ListTransactionsResponse](docs/ListTransactionsResponse.md)
  - [Model.Location](docs/Location.md)
  - [Model.Money](docs/Money.md)
+ - [Model.ObtainTokenRequest](docs/ObtainTokenRequest.md)
+ - [Model.ObtainTokenResponse](docs/ObtainTokenResponse.md)
  - [Model.Order](docs/Order.md)
  - [Model.OrderLineItem](docs/OrderLineItem.md)
  - [Model.OrderLineItemDiscount](docs/OrderLineItemDiscount.md)
@@ -307,17 +310,24 @@ Class | Method | HTTP request
  - [Model.Refund](docs/Refund.md)
  - [Model.RegisterDomainRequest](docs/RegisterDomainRequest.md)
  - [Model.RegisterDomainResponse](docs/RegisterDomainResponse.md)
+ - [Model.RenewTokenRequest](docs/RenewTokenRequest.md)
+ - [Model.RenewTokenResponse](docs/RenewTokenResponse.md)
  - [Model.RetrieveCatalogObjectRequest](docs/RetrieveCatalogObjectRequest.md)
  - [Model.RetrieveCatalogObjectResponse](docs/RetrieveCatalogObjectResponse.md)
  - [Model.RetrieveCustomerRequest](docs/RetrieveCustomerRequest.md)
  - [Model.RetrieveCustomerResponse](docs/RetrieveCustomerResponse.md)
  - [Model.RetrieveTransactionRequest](docs/RetrieveTransactionRequest.md)
  - [Model.RetrieveTransactionResponse](docs/RetrieveTransactionResponse.md)
+ - [Model.RevokeTokenRequest](docs/RevokeTokenRequest.md)
+ - [Model.RevokeTokenResponse](docs/RevokeTokenResponse.md)
  - [Model.SearchCatalogObjectsRequest](docs/SearchCatalogObjectsRequest.md)
  - [Model.SearchCatalogObjectsResponse](docs/SearchCatalogObjectsResponse.md)
+ - [Model.SearchCustomersRequest](docs/SearchCustomersRequest.md)
+ - [Model.SearchCustomersResponse](docs/SearchCustomersResponse.md)
  - [Model.Tender](docs/Tender.md)
  - [Model.TenderCardDetails](docs/TenderCardDetails.md)
  - [Model.TenderCashDetails](docs/TenderCashDetails.md)
+ - [Model.TimeRange](docs/TimeRange.md)
  - [Model.Transaction](docs/Transaction.md)
  - [Model.UpdateCustomerRequest](docs/UpdateCustomerRequest.md)
  - [Model.UpdateCustomerResponse](docs/UpdateCustomerResponse.md)
@@ -354,6 +364,7 @@ Class | Method | HTTP request
  - [Model.V1PaymentItemDetail](docs/V1PaymentItemDetail.md)
  - [Model.V1PaymentItemization](docs/V1PaymentItemization.md)
  - [Model.V1PaymentModifier](docs/V1PaymentModifier.md)
+ - [Model.V1PaymentSurcharge](docs/V1PaymentSurcharge.md)
  - [Model.V1PaymentTax](docs/V1PaymentTax.md)
  - [Model.V1PhoneNumber](docs/V1PhoneNumber.md)
  - [Model.V1Refund](docs/V1Refund.md)
@@ -395,6 +406,7 @@ Class | Method | HTTP request
   - TIMECARDS_READ: GET endpoints related to employee timecards
   - TIMECARDS_WRITE: POST, PUT, and DELETE endpoints related to employee timecards
   - PAYMENTS_WRITE_ADDITIONAL_RECIPIENTS: Allow third party applications to deduct a portion of each transaction amount.
+  - PAYMENTS_WRITE_IN_PERSON: POST, PUT, and DELETE endpoints. Grants write access to transaction and refunds information.
 
 <a name="oauth2ClientSecret"></a>
 ### oauth2ClientSecret
